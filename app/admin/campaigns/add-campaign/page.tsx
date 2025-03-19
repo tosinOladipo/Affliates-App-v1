@@ -1,4 +1,5 @@
 import { SubmitButton } from "@/components/form/Button";
+import CheckboxInput from "@/components/form/CheckboxInput";
 import FormContainer from "@/components/form/FormContainer";
 import FormInput from "@/components/form/FormInput";
 import ImageInput from "@/components/form/ImageInput";
@@ -27,6 +28,10 @@ function AddCampaignPage() {
             name='description'
             labelText='Campaign Caption or Description'
           />
+          </div>
+
+          <div className="w-full">
+          <CheckboxInput name='featured' label='featured' />
           </div>
 
           <SubmitButton text='Create Campaign' className='mt-8' />
