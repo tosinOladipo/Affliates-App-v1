@@ -1,10 +1,13 @@
 import CampaignCard from '@/components/campaigns/CampaignCard'
 import Container from '@/components/global/Container'
 import SectionTitle from '@/components/global/SectionTitle'
+import { fetchFeaturedCampaigns } from '@/utils/actions'
 import { campaigns } from '@/utils/campaigns'
+import Link from 'next/link'
 import React from 'react'
 
-function CampaignsPage() {
+async function CampaignsPage() {
+  const campaigns = await fetchFeaturedCampaigns()
   return (
     <Container>
       <SectionTitle title="Campaigns"/>
@@ -12,13 +15,15 @@ function CampaignsPage() {
          
           {campaigns.map((campaign) => {
             return (
-              <div className='basis-1/4' key={campaign.campaignBanner}>
+              <div className='basis-1/4' key={campaign.id}>
+                <Link href={`/admin/campaigns/${campaign.id}`}>
                 <CampaignCard 
-                campaignBanner={campaign.campaignBanner}
-                camapignTitle={campaign.campaignTitle}
-                campaignDesc={campaign.campaignDesc}
-                campaignLeads={campaign.campaignLeads}
+                campaignBanner={campaign.image}
+                campaignTitle={campaign.campaignTitle}
+                campaignDesc={campaign.description}
+                campaignLeads={2}
                 />
+                </Link>
                  </div>
             )
         })}

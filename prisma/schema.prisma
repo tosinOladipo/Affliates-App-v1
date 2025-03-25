@@ -26,3 +26,10 @@ model Campaign {
   updatedAt    DateTime   @updatedAt
   clerkId  String
 }
+
+
+model Social {
+  id           String     @id @default(uuid())
+  channelName  String     
+  clerkId      String 
+}
