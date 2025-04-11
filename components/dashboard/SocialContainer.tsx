@@ -14,14 +14,14 @@ function SocialContainer() {
         <CardContent className='flex flex-col justify-center h-full p-4 md:p-6'>
             <div className='w-full h-[220px] flex flex-col'>
                 <section className='h-[50%] grid grid-cols-3 border-b-1'>
-                <SocialCard socialIcon={facebookIcon} socialLabel='Facebook' clicksAmt={500} leadsAmt={200}/>
-                <SocialCard className='border-l-1 border-gray-200' socialIcon={instagramIcon} socialLabel='Facebook' clicksAmt={500} leadsAmt={200}/>
-                <SocialCard className='border-l-1  border-gray-200' socialIcon={twiiterIcon} socialLabel='Twitter' clicksAmt={500} leadsAmt={200}/>
+                <SocialCard socialIcon={facebookIcon} socialLabel='Facebook'/>
+                <SocialCard className='border-l-1 border-gray-200' socialIcon={instagramIcon} socialLabel='Instagram'/>
+                <SocialCard className='border-l-1  border-gray-200' socialIcon={twiiterIcon} socialLabel='Twitter'/>
                 </section>
                 <section className='h-[50%] grid grid-cols-3'>
-                <SocialCard socialIcon={youtubeIcon} socialLabel='YouTube' clicksAmt={500} leadsAmt={200}/>
-                <SocialCard className='border-l-1  border-gray-200' socialIcon={whatAppIcon} socialLabel='WhatsApp' clicksAmt={500} leadsAmt={200}/>
-                <SocialCard className='border-l-1  border-gray-200' socialIcon={tiktokIcon} socialLabel='Tik-Tok' clicksAmt={500} leadsAmt={200}/>
+                <SocialCard socialIcon={youtubeIcon} socialLabel='YouTube'/>
+                <SocialCard className='border-l-1  border-gray-200' socialIcon={whatAppIcon} socialLabel='WhatsApp'/>
+                <SocialCard className='border-l-1  border-gray-200' socialIcon={tiktokIcon} socialLabel='Tik-Tok'/>
                 </section>
             </div>
         </CardContent>

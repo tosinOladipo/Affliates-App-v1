@@ -5,3 +5,11 @@ export const campaignSchema = z.object({
   description: z.string(),
   featured: z.coerce.boolean(),
 });
+
+
+export const profileSchema = z.object({
+  firstname: z.string().min(4),
+  lastname: z.string(),
+  email: z.string(),
+  phonenumber: z.string(),
+});

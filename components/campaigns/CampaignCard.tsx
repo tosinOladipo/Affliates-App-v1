@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { HiOutlineUser } from "react-icons/hi2";
 import { CampaignTypes } from '@/utils/types';
 
-function CampaignCard({campaignBanner, campaignTitle, campaignDesc, campaignLeads} : CampaignTypes) {
+function CampaignCard({campaignBanner, campaignTitle, campaignDesc, campaignLeads} : {campaignBanner: any, campaignTitle: string, campaignDesc : string, campaignLeads: number}) {
   return (
     <Card className='w-full bg-white border-0 shadow-none rounded-4xl md:p-4'>
         <CardContent className='flex flex-col gap-3 px-2 py-2'>

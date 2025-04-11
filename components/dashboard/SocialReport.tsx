@@ -15,6 +15,7 @@ async function SocialReport({ socialLabel }: { socialLabel: string }) {
     if (social) return
     {
         <div className='flex gap-4 text-xs justify-center'>
+            
             <div className='flex flex-col text-center'>
                 <span className='font-medium'>0</span>
                 <span className='text-gray-500'>Clicks</span>

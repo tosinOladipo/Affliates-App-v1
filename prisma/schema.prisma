@@ -14,6 +14,46 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model Profile {
+  id    String     @id @default(uuid())
+  firstname String
+  lastname String
+  email String @unique
+  phonenumber String
+  clerkId String @unique
+  companyList Follower[]
+  createdAt DateTime @default(now())
+}
+
+model Role {
+  id    String     @id @default(uuid())
+  email String @unique
+  userRole String
+  companyId String
+  createdAt DateTime @default(now())
+}
+
+
+model Company {
+    id    String     @id @default(uuid())
+    companyName String
+    compannyEmail String @unique
+    companyPhone String
+    companyLogo String
+    affiliateList Follower[]
+    createdAt DateTime @default(now())
+}
+
+
+model Follower {
+ id    String     @id @default(uuid())
+ company  Company   @relation(fields: [companyId], references: [id])
+ companyId String
+ affiliate  Profile   @relation(fields: [profileClerkId], references: [clerkId])
+ profileClerkId  String
+ createdAt DateTime @default(now())
+}
+
 
 model Campaign {
   id           String     @id @default(uuid())

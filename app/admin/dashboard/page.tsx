@@ -13,8 +13,10 @@ import campaign2 from '@/public/campaign-2.jpg'
 import { Card, CardContent } from "@/components/ui/card";
 import campaignAd from '@/public/campaign-ad.png'
 import Link from "next/link";
+import { fetchCompanyDetails } from "@/utils/actions";
 
-function DashboardPage() {
+async function DashboardPage() {
+ 
   return (
     <Container>
       <SectionTitle title="Dashboard" />
@@ -40,7 +42,7 @@ function DashboardPage() {
           </div>
           <div className="basis-1/2 flex flex-col md:flex-row gap-4">
             <div className="basis-1/2">
-              <CampaignCard campaignBanner={campaign1} camapignTitle="Sample 1" campaignDesc="Your computer may be offline or the server may be experiencing problems" campaignLeads={23}/>
+              <CampaignCard campaignBanner={campaign1} campaignTitle="Sample 1" campaignDesc="Your computer may be offline or the server may be experiencing problems" campaignLeads={23}/>
             </div>
             <div className="basis-1/2 bg-primary rounded-4xl">
                 <Link href='/admin/campaigns/add-campaign'><Image src={campaignAd} alt="Campaign Advertisement" className="w-full"/></Link>
@@ -48,7 +50,7 @@ function DashboardPage() {
           </div>
         </div>
         <div className="basis-1/4">
-          <CampaignCard campaignBanner={campaign2} camapignTitle="Sample 1" campaignDesc="Your computer may be offline or the server may be experiencing problems" campaignLeads={23}/>
+          <CampaignCard campaignBanner={campaign2} campaignTitle="Sample 1" campaignDesc="Your computer may be offline or the server may be experiencing problems" campaignLeads={23}/>
         </div>
       </article>
     </Container>

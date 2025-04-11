@@ -2,7 +2,7 @@
 
 import { auth, currentUser } from '@clerk/nextjs/server';
 import db from '@/utils/db'
-import { campaignSchema } from './schemas';
+import { campaignSchema, profileSchema } from './schemas';
 import { redirect } from 'next/navigation';
 
 const renderError = (error: unknown): { message: string } => {
@@ -19,6 +19,53 @@ const renderError = (error: unknown): { message: string } => {
     }
     return user;
   };
+
+  export const fetchCompanyDetails = async (companyId : string) => {
+    const getCompany = await db.company.findUnique({
+        where: {
+            id: companyId
+        },
+    });
+    if(!getCompany) redirect('/')
+     return getCompany;   
+  }
+
+
+  export const createProfileAction = async (
+    prevState: any,
+    formData: FormData
+  ): Promise<{ message: string }> => {
+
+    const user = await getAuthUser();
+  
+    try {
+        const rawData = Object.fromEntries(formData);
+        const validatedFields = profileSchema.parse(rawData);
+  
+      await db.profile.create({
+        data: {
+            ...validatedFields,
+          clerkId: user.id,
+        },
+      });
+      return { message: 'Campaign created' };
+    } catch (error) {
+      return renderError(error);
+    }
+  };
+
+  export const fetchProfileDetails = async () => {
+
+    const user = await getAuthUser();
+
+    const getProfile = await db.profile.findUnique({
+        where: {
+            id: user.id
+        },
+    });
+     return getProfile;   
+  }
+
 
 
 export const createCampaignAction = async (

@@ -20,7 +20,7 @@ function AddCampaignPage() {
             <FormInput type="text" name="campaignTitle" label="Campaign Title" />
           </div>
           <div className="grid gap-4 md:grid-cols-2 my-4">
-              <ImageInput/>
+              <ImageInput label="Image"/>
               <VideoInput/>
           </div>
           <div className="w-full">

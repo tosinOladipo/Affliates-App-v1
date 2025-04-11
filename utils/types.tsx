@@ -1,5 +1,5 @@
 export type CampaignTypes = {
-  campaignBanner: string;
+  campaignBanner:  string;
   campaignTitle: string;
   campaignDesc: string;
   campaignLeads: number;
