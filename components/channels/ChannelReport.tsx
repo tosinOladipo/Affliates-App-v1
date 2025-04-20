@@ -1,7 +1,7 @@
-import { UserChannelIdType } from '@/utils/types'
+import { CompanyIdChannelType } from '@/utils/types'
 import React from 'react'
 
-function ChannelReport({clerId} : UserChannelIdType) {
+function ChannelReport({companyId} : CompanyIdChannelType) {
   return (
     <div className='flex flex-row gap-8'>
         <div className='flex flex-col gap-1 text-sm'>

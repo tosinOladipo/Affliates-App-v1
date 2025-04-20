@@ -2,7 +2,6 @@ import CampaignCard from '@/components/campaigns/CampaignCard'
 import Container from '@/components/global/Container'
 import SectionTitle from '@/components/global/SectionTitle'
 import { fetchFeaturedCampaigns } from '@/utils/actions'
-import { campaigns } from '@/utils/campaigns'
 import Link from 'next/link'
 import React from 'react'
 

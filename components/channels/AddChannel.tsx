@@ -8,12 +8,11 @@ import FormContainer from '../form/FormContainer';
 import ChannelReport from './ChannelReport';
 import { currentUser } from '@clerk/nextjs/server';
 
-async function AddChannel({channelName, channelIcon} : ChannelType) {
-const user = await currentUser();
-const userId = user?.id;
+async function AddChannel({channelName, companyId} : ChannelType) {
 
-const social = await fetchChannelByName(channelName, userId)
-if (social) return <ChannelReport clerId={social.clerkId}/>  
+const social = await fetchChannelByName(channelName, companyId)
+
+if (social) return <ChannelReport companyId={companyId}/>  
   return (
     <FormContainer action={addSocialChannel}>
         <Input

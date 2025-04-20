@@ -5,9 +5,9 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  directUrl         = env("DIRECT_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 generator client {
@@ -15,61 +15,113 @@ generator client {
 }
 
 model Profile {
-  id    String     @id @default(uuid())
-  firstname String
-  lastname String
-  email String @unique
+  id          String     @id @default(uuid())
+  firstname   String
+  lastname    String
+  email       String     @unique
   phonenumber String
-  clerkId String @unique
+  clerkId     String     @unique
   companyList Follower[]
-  createdAt DateTime @default(now())
+  createdAt   DateTime   @default(now())
 }
 
 model Role {
-  id    String     @id @default(uuid())
-  email String @unique
-  userRole String
+  id        String   @id @default(uuid())
+  email     String   @unique
+  userRole  String
   companyId String
   createdAt DateTime @default(now())
+  clerkId   String   @unique
 }
-
 
 model Company {
-    id    String     @id @default(uuid())
-    companyName String
-    compannyEmail String @unique
-    companyPhone String
-    companyLogo String
-    affiliateList Follower[]
-    createdAt DateTime @default(now())
+  id            String     @id @default(uuid())
+  companyName   String
+  companyEmail  String     @unique
+  companyPhone  String
+  companyLogo   String
+  affiliateList Follower[]
+  createdAt     DateTime   @default(now())
 }
-
 
 model Follower {
- id    String     @id @default(uuid())
- company  Company   @relation(fields: [companyId], references: [id])
- companyId String
- affiliate  Profile   @relation(fields: [profileClerkId], references: [clerkId])
- profileClerkId  String
- createdAt DateTime @default(now())
+  id             String   @id @default(uuid())
+  company        Company  @relation(fields: [companyId], references: [id])
+  companyId      String
+  affiliate      Profile  @relation(fields: [profileClerkId], references: [clerkId])
+  profileClerkId String
+  createdAt      DateTime @default(now())
 }
-
 
 model Campaign {
-  id           String     @id @default(uuid())
-  campaignTitle        String
-  image     String
-  video       String
-  description String
-  featured   Boolean
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  clerkId  String
+  id                String         @id @default(uuid())
+  campaignTitle     String
+  campaignObjective String
+  image             String
+  video             String
+  description       String
+  featured          Boolean
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  companyId         String
+  clerkid           String
+  active            Boolean
+  campaignFormObjs    CampaignForm[]
 }
 
+model CampaignForm {
+  id         String   @id @default(uuid())
+  campaign   Campaign @relation(fields: [campaignId], references: [id])
+  campaignId String @unique
+  formType   String
+}
+
+model CampaignURL {
+  id            String  @id @default(uuid())
+  campaignId    String  @unique
+  websiteURL    String?
+  iosURL        String?
+  googlePlayURL String?
+}
+
+model Impression {
+  id                 String   @id @default(uuid())
+  campaignId         String
+  affiliateId        String
+  companyId          String
+  channelName        String
+  campaignImpression Int
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model View {
+  id           String   @id @default(uuid())
+  campaignId   String
+  affiliateId  String
+  companyId    String
+  channelName  String
+  campaignView Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Lead {
+  id          String   @id @default(uuid())
+  leadName    String
+  email       String
+  phoneNumber String
+  mobileOS    String
+  campaignId  String
+  companyId   String
+  affiliateId String
+  channelName String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
 
 model Social {
-  id           String     @id @default(uuid())
-  channelName  String     
-  clerkId      String 
+  id          String @id @default(uuid())
+  channelName String
+  companyId   String
 }

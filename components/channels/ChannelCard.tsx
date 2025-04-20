@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 import AddChannel from './AddChannel'
 
-function ChannelCard({channelName, channelIcon}: ChannelType) {  
+function ChannelCard({channelName, channelIcon, companyId}: ChannelType) {  
     
   return (
     <div className='bg-white rounded-4xl flex flex-col py-6'>
@@ -13,7 +13,7 @@ function ChannelCard({channelName, channelIcon}: ChannelType) {
         </div>
         <h2 className='text-center font-medium py-4'>{channelName}</h2>
         <div className='mx-auto'>
-            <AddChannel channelName={channelName} channelIcon={channelIcon}/>
+            <AddChannel channelName={channelName} channelIcon={channelIcon} companyId={companyId}/>
         </div>
     </div>
   )

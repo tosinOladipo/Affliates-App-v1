@@ -1,8 +1,9 @@
 import React from 'react'
+import { cn } from '@/lib/utils';
 
-function SectionTitle({title}: {title : String}) {
+function SectionTitle({title, className}: {title : String, className? : string}) {
   return (
-    <div className='text-xl capitalize font-medium mb-6'>{title}</div>
+    <div className={cn('text-xl capitalize font-medium mb-6', className)}>{title}</div>
   )
 }
 

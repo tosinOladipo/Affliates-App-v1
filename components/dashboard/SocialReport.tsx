@@ -6,12 +6,11 @@ import { addSocialChannel } from '@/utils/actions';
 import { fetchChannelByName } from '@/utils/actions'
 import FormContainer from '../form/FormContainer';
 
-async function SocialReport({ socialLabel }: { socialLabel: string }) {
+async function SocialReport({ socialLabel, companyId }: { socialLabel: string, companyId: string}) {
 
-    const user = await currentUser();
-    const userId = user?.id;
 
-    const social = await fetchChannelByName(socialLabel, userId)
+
+    const social = await fetchChannelByName(socialLabel, companyId)
     if (social) return
     {
         <div className='flex gap-4 text-xs justify-center'>

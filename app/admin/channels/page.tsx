@@ -2,9 +2,13 @@ import ChannelCard from '@/components/channels/ChannelCard'
 import Container from '@/components/global/Container'
 import SectionTitle from '@/components/global/SectionTitle'
 import { channels } from '@/utils/channels'
+import { fetchCompanyId} from "@/utils/actions";
 import React from 'react'
 
-function ChannelsPage() {
+async function ChannelsPage() {
+
+  const companyId = await fetchCompanyId()
+
   return (
     <Container>
       <SectionTitle title="Channels"/>
@@ -12,7 +16,7 @@ function ChannelsPage() {
         {channels.map((channel) => {
           return (
             <div key={channel.channelName}>
-                <ChannelCard channelName={channel.channelName} channelIcon={channel.channelIcon}/>
+                <ChannelCard channelName={channel.channelName} channelIcon={channel.channelIcon} companyId={companyId}/>
             </div>
           )
         })}

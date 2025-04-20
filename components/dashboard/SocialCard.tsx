@@ -5,7 +5,7 @@ import SocialReport from './SocialReport';
 
 
 function SocialCard(
-    {className, socialIcon, socialLabel} : {className? : string, socialIcon : any, socialLabel : string}
+    {className, socialIcon, socialLabel, companyId} : {className? : string, socialIcon : any, socialLabel : string, companyId : string}
 ) {
 
   return (
@@ -14,7 +14,7 @@ function SocialCard(
             <Image src={socialIcon} alt={socialLabel} className='w-[14px] h-[14px] mx-auto'/>
         </div>
 
-        <SocialReport socialLabel={socialLabel}/>
+        <SocialReport socialLabel={socialLabel} companyId={companyId} />
     </aside>
   )
 }
